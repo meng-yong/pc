@@ -1,9 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ElementUi from 'element-ui'
+// import ElementUi from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
+// import router from '@/router'
+// Vue.use(ElementUi)
+// 引入 elment-ui 组件库
+import ElmentUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 引入router 路由
 import router from '@/router'
-Vue.use(ElementUi)
+// 注册 eu 实力
+Vue.use(ElmentUi)
 Vue.config.productionTip = false
 
 new Vue({
