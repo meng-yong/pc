@@ -9,6 +9,10 @@ import ElmentUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入router 路由
 import router from '@/router'
+// 简单配置axios
+import axios from 'axios'
+Vue.prototype.$http = axios
+
 // 注册 eu 实力
 Vue.use(ElmentUi)
 Vue.config.productionTip = false
