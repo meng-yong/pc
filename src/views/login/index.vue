@@ -25,18 +25,39 @@
 
 <script>
 import '../../style/index.less'
+// 引入 Store
+import Store from '@/store'
 export default {
   methods: {
     login () {
-      this.$refs.loginForm.validate((valid) => {
+      // 调用validate 对表单整体校验
+      this.$refs.loginForm.validate(async (valid) => {
         if (valid) {
-          this.$http.post(' http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
-            .then(res => {
-              this.$router.push('/')
-            })
-            .catch(() => {
-              this.$message.error('手机号或验证码错误')
-            })
+          // this.$http.post('authorizations', this.loginForm)
+          // // 成功
+          //   .then(res => {
+          //     // res是响应对象---->res.data是响应主体---->res.data.data是响应主体里面包括message,data
+          //     Store.setUser(res.data.data)
+          //     console.log(res)
+          //     // 成功就跳转到首页
+          //     this.$router.push('/')
+          //   })
+          // // 失败
+          //   .catch(() => {
+          //     // 失败就提示
+          //     this.$message.error('手机号或验证码错误')
+          //   })
+          // ------------------------------使用await 和 async ------------------
+          // try{可能报错的代码 }--->   catch(error){处理异常报错的}
+          // await只能获取respones的成功结果
+          try {
+            const { data: { data } } = await this.$http.post('authorizations', this.loginForm)
+            // Store 组件里面的setUser 方法
+            Store.setUser(data)
+            //     console.log(res)
+            //     // 成功就跳转到首页
+            this.$router.push('/')
+          } catch (e) { this.$message.error('手机号或验证码错误') }
         }
       })
     }
@@ -51,8 +72,8 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
-        code: ''
+        mobile: '17636499502',
+        code: '246810'
       },
       //   表单的校检规则对象
       loginRules: {
