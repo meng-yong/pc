@@ -8,6 +8,7 @@ import Baocuo from '@/views/404'
 import store from '@/store'
 // 引入Article 组件
 import Article from '@/views/Article'
+import text from '@/views/text/com-b'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -23,7 +24,8 @@ const router = new VueRouter({
         { path: '/', name: 'hello', component: Hello },
         { path: '/article', name: 'Article', component: Article }
       ] },
-    { path: '*', name: '404', component: Baocuo }
+    { path: '*', name: '404', component: Baocuo },
+    { path: '/text', name: 'txet', component: text }
   ]
 })
 router.beforeEach((to, from, next) => {
