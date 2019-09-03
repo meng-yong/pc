@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue' // 跟组件
 import App from './App.vue'
 // import ElementUi from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
@@ -7,7 +7,7 @@ import App from './App.vue'
 // 引入 elment-ui 组件库
 import ElmentUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-// 引入router 路由
+//  引入router 路由 router.js
 import router from '@/router'
 // 简单配置axios
 import axios from '@/api'

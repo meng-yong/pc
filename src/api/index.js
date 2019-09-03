@@ -3,6 +3,17 @@ import axios from 'axios'
 // 引入本地存储
 import store from '@/store'
 import router from '@/router'
+import JSONBIG from 'json-bigint'
+// 进行配置
+// 3. 自定义转换响应内容
+axios.defaults.transformResponse = [(data) => {
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+  // data 原始数据
+}]
 // 配置基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 // 配置请求头
